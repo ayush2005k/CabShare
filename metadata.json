@@ -1,0 +1,6 @@
+{
+  "name": "CabShare - Cab Pooling App",
+  "description": "Modern frontend for a cab pooling community. Connects riders and drivers for shared journeys.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

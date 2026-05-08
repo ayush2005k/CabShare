@@ -1,0 +1,94 @@
+/* 
+  CabShare - Clean Minimalism Theme
+  Sophisticated monochrome palette with vibrant yellow highlights.
+*/
+
+@import "tailwindcss";
+
+@theme {
+  --color-accent: #FACC15;
+  --color-accent-dark: #EAB308;
+  --color-primary: #000000;
+  --color-canvas: #F3F4F6;
+  --color-border: #E5E7EB;
+  --color-text-dim: #6B7280;
+  
+  --font-sans: 'Inter', 'Helvetica Neue', Arial, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-canvas text-black font-sans antialiased;
+  }
+  
+  input, select {
+    @apply w-full px-4 py-3 rounded-xl border border-border focus:outline-none focus:ring-2 focus:ring-accent transition-all bg-white;
+  }
+  
+  label {
+    @apply block text-[12px] font-bold mb-1.5 text-text-dim uppercase tracking-wider;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold transition-all active:scale-95 disabled:opacity-50;
+  }
+  
+  .btn-primary {
+    @apply bg-black text-white hover:bg-zinc-800 shadow-sm border border-black;
+  }
+  
+  .btn-accent {
+    @apply bg-accent text-black hover:bg-accent-dark shadow-sm border border-accent;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-black text-black hover:bg-black hover:text-white bg-white;
+  }
+  
+  .card {
+    @apply bg-white rounded-[20px] p-6 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] border border-border;
+  }
+  
+  .nav-item {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-medium text-[14px];
+  }
+  
+  .nav-item.active {
+    @apply bg-[#262626] text-accent font-semibold;
+  }
+  
+  .nav-item:not(.active) {
+    @apply text-white/70 hover:bg-[#1A1A1A] hover:text-white;
+  }
+
+  /* Specific Sidebar Style */
+  .sidebar {
+    @apply bg-black text-white h-auto lg:h-screen relative lg:fixed left-0 top-0 w-full lg:w-[260px] p-6 flex lg:flex-col z-[60];
+  }
+
+  .main-content {
+    @apply flex-1 ml-0 lg:ml-[260px] p-4 lg:p-8 min-h-screen bg-canvas;
+  }
+}
+
+/* Custom Utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+}
+
+.logo-box {
+  @apply w-8 h-8 bg-accent rounded-lg mr-3 shadow-inner;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}

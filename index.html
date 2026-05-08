@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CabShare | Ride Together, Save Together</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-canvas min-h-screen overflow-x-hidden">
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 glass border-b border-border">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="logo-box flex items-center justify-center">
+                    <i data-lucide="car-front" class="text-black w-5 h-5"></i>
+                </div>
+                <span class="text-xl font-extrabold tracking-tighter">POOL.IT</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="/login.html" class="text-sm font-bold hover:text-accent transition-colors">Login</a>
+                <a href="/register.html" class="btn btn-primary px-5 py-2.5 text-sm">Join Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="max-w-7xl mx-auto px-6 pt-40 pb-20 grid lg:grid-cols-2 gap-16 items-center">
+        <div class="animate-fade-in">
+            <h1 class="text-6xl lg:text-8xl font-black leading-none tracking-tighter mb-8">
+                Ride together,<br>
+                <span class="text-accent underline decoration-4 underline-offset-8">save forever.</span>
+            </h1>
+            <p class="text-lg text-text-dim mb-10 max-w-lg leading-relaxed">
+                The most sophisticated community for cab pooling. Modern, safe, and designed for your daily commute.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="/register.html" class="btn btn-primary px-10 py-5 text-lg group">
+                    Get Started 
+                    <i data-lucide="arrow-right" class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+                <a href="/login.html" class="btn btn-outline px-10 py-5 text-lg">
+                    Login
+                </a>
+            </div>
+
+            <div class="mt-8 p-4 bg-white/50 border border-border rounded-xl max-w-md animate-fade-in">
+                <p class="text-xs font-bold uppercase tracking-widest text-text-dim mb-2">Demo Mode Active</p>
+                <p class="text-xs text-text-dim">You can use any email/password to login, or suggest <span class="font-bold text-black">demo@example.com / password</span>.</p>
+            </div>
+        </div>
+
+        <!-- Decorative Element -->
+        <div class="relative lg:block hidden">
+            <div class="card p-4 bg-white relative z-10">
+                <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=1000&auto=format&fit=crop" 
+                     alt="Cab Interior" 
+                     class="w-full h-[500px] object-cover rounded-xl">
+                <div class="p-6">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="font-bold text-lg">Downtown Commute</p>
+                            <p class="text-sm text-text-dim">45 active pools right now</p>
+                        </div>
+                        <div class="bg-accent px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">Live</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
