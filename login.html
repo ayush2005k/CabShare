@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | CabShare</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body class="bg-canvas min-h-screen flex items-center justify-center p-6 text-black">
     <div class="w-full max-w-md animate-fade-in">
-        <a href="/index.html" class="inline-flex items-center gap-2 text-text-dim hover:text-black mb-8 transition-colors">
+        <a href="index.html" class="inline-flex items-center gap-2 text-text-dim hover:text-black mb-8 transition-colors">
             <i data-lucide="arrow-left" class="w-4 h-4"></i>
             Back to Home
         </a>
@@ -34,22 +34,84 @@
 
             <p class="mt-8 text-center text-text-dim text-sm">
                 Don't have an account? 
-                <a href="/register.html" class="text-black font-bold hover:underline">Register here</a>
+                <a href="register.html" class="text-black font-bold hover:underline">Register here</a>
             </p>
         </div>
     </div>
 
+   
     <script type="module">
-        import { auth } from '/js/auth.js';
-        
-        lucide.createIcons();
 
-        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    lucide.createIcons();
+
+    const loginForm =
+        document.getElementById("loginForm");
+
+    loginForm.addEventListener(
+        "submit",
+        async (e) => {
+
             e.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            await auth.login(email, password);
-        });
-    </script>
+
+            const email =
+                document.getElementById("email").value;
+
+            const password =
+                document.getElementById("password").value;
+
+            try {
+
+                const response = await fetch(
+                    "http://127.0.0.1:8000/api/auth/login/",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+
+                        body: JSON.stringify({
+                            email,
+                            password
+                        })
+                    }
+                );
+
+                const data = await response.json();
+
+                console.log(data);
+
+                if (response.ok) {
+
+                    localStorage.setItem(
+                        "accessToken",
+                        data.access
+                    );
+
+                    localStorage.setItem(
+                        "refreshToken",
+                        data.refresh
+                    );
+
+                    alert("Login Successful!");
+
+                    window.location.href =
+                        "dashboard.html";
+
+                } else {
+
+                    alert(JSON.stringify(data));
+                }
+
+            } catch (error) {
+
+                console.log(error);
+
+                alert("Server Error");
+            }
+        }
+    );
+
+</script>
 </body>
 </html>

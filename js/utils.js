@@ -7,22 +7,25 @@ export const utils = {
    * Check if user is logged in
    */
   isAuthenticated: () => {
-    return !!localStorage.getItem("access_token");
+    return !!localStorage.getItem("accessToken");
   },
 
   /**
    * Get current user info from localStorage
    */
   getUser: () => {
-    const user = localStorage.getItem("user");
-    return user ? JSON.parse(user) : null;
+    return{
+      name: "ayush",
+      role: "Rider"
+    }
+    
   },
 
   /**
    * Save auth data
    */
   saveAuth: (token, user) => {
-    localStorage.setItem("access_token", token);
+    localStorage.setItem("accessToken", token);
     localStorage.setItem("user", JSON.stringify(user));
   },
 
@@ -30,7 +33,8 @@ export const utils = {
    * Logout user
    */
   logout: () => {
-    localStorage.removeItem("access_token");
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
     localStorage.removeItem("user");
     window.location.href = "/index.html";
   },
