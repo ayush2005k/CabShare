@@ -4,67 +4,190 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register | CabShare</title>
-    <link rel="stylesheet" href="/css/styles.css">
+
+    <link rel="stylesheet" href="./css/styles.css">
+
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+
 <body class="bg-canvas min-h-screen flex items-center justify-center p-6 text-black">
+
     <div class="w-full max-w-md animate-fade-in">
-        <a href="/index.html" class="inline-flex items-center gap-2 text-text-dim hover:text-black mb-8 transition-colors">
+
+        <a href="./index.html"
+           class="inline-flex items-center gap-2 text-text-dim hover:text-black mb-8 transition-colors">
+
             <i data-lucide="arrow-left" class="w-4 h-4"></i>
+
             Back to Home
         </a>
 
         <div class="card p-10">
-            <h2 class="text-3xl font-extrabold mb-1 tracking-tight">Create Account</h2>
-            <p class="text-text-dim mb-8">Join the POOL.IT community today.</p>
 
+            <h2 class="text-3xl font-extrabold mb-1 tracking-tight">
+                Create Account
+            </h2>
+
+            <p class="text-text-dim mb-8">
+                Join the POOL.IT community today.
+            </p>
+
+            <!-- REGISTER FORM -->
             <form id="registerForm" class="space-y-6">
+
+                <!-- USERNAME -->
                 <div>
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" placeholder="John Doe" required>
+                    <label for="username">Full Name</label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="John Doe"
+                        required
+                    >
                 </div>
+
+                <!-- EMAIL -->
                 <div>
                     <label for="email">Email address</label>
-                    <input type="email" id="email" placeholder="john@example.com" required>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="john@example.com"
+                        required
+                    >
                 </div>
+
+                <!-- PASSWORD -->
                 <div>
                     <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="••••••••" required>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="••••••••"
+                        required
+                    >
                 </div>
+
+                <!-- ROLE -->
                 <div>
                     <label for="role">Your Role</label>
+
                     <select id="role" required>
-                        <option value="Rider">Rider (Join rides)</option>
-                        <option value="Driver">Driver (Post rides)</option>
+
+                        <option value="rider">
+                            Rider (Join rides)
+                        </option>
+
+                        <option value="driver">
+                            Driver (Post rides)
+                        </option>
+
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary w-full py-4 text-base">
+
+                <!-- BUTTON -->
+                <button
+                    type="submit"
+                    class="btn btn-primary w-full py-4 text-base"
+                >
                     Sign Up
                 </button>
+
             </form>
 
+            <!-- LOGIN LINK -->
             <p class="mt-8 text-center text-text-dim text-sm">
-                Already have an account? 
-                <a href="/login.html" class="text-black font-bold hover:underline">Login here</a>
+
+                Already have an account?
+
+                <a
+                    href="./login.html"
+                    class="text-black font-bold hover:underline"
+                >
+                    Login here
+                </a>
+
             </p>
+
         </div>
+
     </div>
 
+    <!-- SCRIPT -->
     <script type="module">
-        import { auth } from '/js/auth.js';
-        
+
         lucide.createIcons();
-        
-        document.getElementById('registerForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const userData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                password: document.getElementById('password').value,
-                role: document.getElementById('role').value
-            };
-            await auth.register(userData);
-        });
+
+        const registerForm =
+            document.getElementById("registerForm");
+
+        registerForm.addEventListener(
+            "submit",
+            async (e) => {
+
+                e.preventDefault();
+
+                const userData = {
+
+                    username:
+                        document.getElementById("username").value,
+
+                    email:
+                        document.getElementById("email").value,
+
+                    password:
+                        document.getElementById("password").value,
+
+                    role:
+                        document.getElementById("role").value
+                };
+
+                try {
+
+                    const response = await fetch(
+                        "http://127.0.0.1:8000/api/auth/register/",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+
+                            body: JSON.stringify(userData)
+                        }
+                    );
+
+                    const data = await response.json();
+
+                    console.log(data);
+
+                    if (response.ok) {
+
+                        alert("Registration Successful!");
+
+                        window.location.href = "/login.html";
+
+                    } else {
+
+                        alert(
+                            data.detail ||
+                            "Registration Failed"
+                        );
+                    }
+
+                } catch (error) {
+
+                    console.log(error);
+
+                    alert("Server Error");
+                }
+            }
+        );
+
     </script>
+
 </body>
 </html>
