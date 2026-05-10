@@ -23,4 +23,6 @@ urlpatterns = [
     path('api/auth/', include('users.urls')),
 
     path('api/rides/', include('rides.urls')),
+
+    path('api/bookings/', include('bookings.urls')),
 ]
