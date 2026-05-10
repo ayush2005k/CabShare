@@ -259,12 +259,38 @@
         }
 
         window.handleJoin = async (id) => {
-            const success = await rides.join(id);
-            if (success) {
-                utils.showToast("Ride joined!");
-                loadAvailableRides();
+            const token =localStorage.getItem("accessToken");
+            if (!token) {
+                alert("Please login first");
+                window.location.href = "login.html";
+                return;
             }
-        };
+            try{
+                const response = await fetch(
+                    `http://127.0.0.1:8000/api/bookings/join/${id}/`,
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": `Bearer ${token}`
+                        }
+                    }
+                );
+                const data = await response.json();
+
+                console.log(data);
+
+                if (response.ok) {
+                    alert("Ride Joined Successfully!");
+                    loadAvailableRides();
+                } else {
+                    alert(JSON.stringify(data));
+                }
+            } catch (error) {
+                console.log(error);
+                alert("Server Error");
+    }
+};
 
         document.getElementById('logoutBtn').addEventListener('click', () => {
             utils.logout();
