@@ -102,7 +102,7 @@
 
     <script type="module">
         import { utils } from '/js/utils.js';
-        import { rides } from '/js/rides.js';
+        
         
         utils.requireAuth();
         lucide.createIcons();
@@ -163,14 +163,59 @@
         }
 
         async function loadAvailableRides() {
-            const availableRides = await rides.getAvailable();
-            renderRides(availableRides, 'Rider');
+
+            try {
+
+
+        const response = await fetch(
+            "http://127.0.0.1:8000/api/rides/"
+        );
+
+        const ridesData =
+            await response.json();
+
+        console.log(ridesData);
+
+        renderRides(
+            ridesData,
+            'Rider'
+        );
+
+    } catch (error) {
+
+        console.log(error);
+
+        contentSection.innerHTML = `
+            <div class="card p-12 text-center">
+                <p class="text-red-500 font-bold">
+                    Failed to load rides
+                </p>
+            </div>
+        `;
+    }
+
         }
 
         async function loadDriverRides() {
-            const myRides = await rides.getAvailable(); 
-            renderRides(myRides, 'Driver');
+            try {
+                const response = await fetch(
+                    "http://127.0.0.1:8000/api/rides/"
+                );
+                const ridesData = await response.json();
+                console.log(ridesData);
+                renderRides(ridesData, 'Driver');
+            } catch (error) {
+                console.log(error);
+                contentSection.innerHTML = `
+                    <div class="card p-12 text-center">
+                        <p class="text-red-500 font-bold">
+                            Failed to load your rides
+                        </p>
+                    </div>
+                `;
+            }
         }
+        
 
         function renderRides(rideList, role) {
             if (!rideList || rideList.length === 0) {
