@@ -4,114 +4,364 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post a Ride | CabShare</title>
+
     <link rel="stylesheet" href="/css/styles.css">
+
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+
 <body class="bg-canvas min-h-screen">
+
     <!-- Navbar -->
     <nav class="glass border-b border-border sticky top-0 z-50">
+
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+
             <div class="flex items-center gap-2">
+
                 <div class="logo-box flex items-center justify-center">
-                    <i data-lucide="car-front" class="text-black w-5 h-5"></i>
+                    <i data-lucide="car-front"
+                       class="text-black w-5 h-5"></i>
                 </div>
-                <span class="text-xl font-black italic tracking-tighter">POOL.IT</span>
+
+                <span class="text-xl font-black italic tracking-tighter">
+                    POOL.IT
+                </span>
+
             </div>
-            <a href="/dashboard.html" class="p-2 hover:bg-white rounded-full transition-colors">
-                <i data-lucide="x" class="w-6 h-6 text-text-dim"></i>
+
+            <a href="/dashboard.html"
+               class="p-2 hover:bg-white rounded-full transition-colors">
+
+                <i data-lucide="x"
+                   class="w-6 h-6 text-text-dim"></i>
+
             </a>
+
         </div>
+
     </nav>
 
+    <!-- Main Content -->
     <div class="max-w-3xl mx-auto px-6 py-12">
+
         <div class="animate-fade-in">
-            <h1 class="text-4xl font-black mb-8 tracking-tight" id="pageTitle">Post a New Ride</h1>
-            
+
+            <h1 class="text-4xl font-black mb-8 tracking-tight"
+                id="pageTitle">
+
+                Post a New Ride
+
+            </h1>
+
             <div class="card p-10">
-                <form id="createRideForm" class="space-y-8">
+
+                <form id="createRideForm"
+                      class="space-y-8">
+
+                    <!-- Locations -->
                     <div class="grid md:grid-cols-2 gap-8">
+
                         <div>
-                            <label for="start_location">Pickup Location</label>
+
+                            <label for="start_location">
+                                Pickup Location
+                            </label>
+
                             <div class="relative">
-                                <i data-lucide="map-pin" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"></i>
-                                <input type="text" id="start_location" placeholder="e.g. City Center" class="pl-12" required>
+
+                                <i data-lucide="map-pin"
+                                   class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"></i>
+
+                                <input
+                                    type="text"
+                                    id="start_location"
+                                    placeholder="e.g. City Center"
+                                    class="pl-12"
+                                    required
+                                >
+
                             </div>
+
                         </div>
+
                         <div>
-                            <label for="end_location">Drop Location</label>
+
+                            <label for="end_location">
+                                Drop Location
+                            </label>
+
                             <div class="relative">
-                                <i data-lucide="navigation" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"></i>
-                                <input type="text" id="end_location" placeholder="e.g. Airport Terminal 1" class="pl-12" required>
+
+                                <i data-lucide="navigation"
+                                   class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"></i>
+
+                                <input
+                                    type="text"
+                                    id="end_location"
+                                    placeholder="e.g. Airport Terminal 1"
+                                    class="pl-12"
+                                    required
+                                >
+
                             </div>
+
                         </div>
+
                     </div>
 
+                    <!-- Time + Seats -->
                     <div class="grid md:grid-cols-2 gap-8">
+
                         <div>
-                            <label for="time">Preferred Time</label>
-                            <input type="datetime-local" id="time" required>
+
+                            <label for="time">
+                                Preferred Time
+                            </label>
+
+                            <input
+                                type="datetime-local"
+                                id="time"
+                                required
+                            >
+
                         </div>
+
                         <div>
-                            <label for="seats" id="seatsLabel">Available Seats</label>
-                            <input type="number" id="seats" min="1" max="6" value="3" required>
+
+                            <label for="seats"
+                                   id="seatsLabel">
+
+                                Available Seats
+
+                            </label>
+
+                            <input
+                                type="number"
+                                id="seats"
+                                min="1"
+                                max="6"
+                                value="3"
+                                required
+                            >
+
                         </div>
+
                     </div>
 
+                    <!-- Bottom -->
                     <div class="pt-8 border-t border-gray-100">
+
                         <div class="flex items-center justify-between mb-8">
+
                             <div class="flex items-center gap-4">
+
                                 <div class="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center">
-                                    <i data-lucide="shield-check" class="text-black w-6 h-6"></i>
+
+                                    <i data-lucide="shield-check"
+                                       class="text-black w-6 h-6"></i>
+
                                 </div>
+
                                 <div>
-                                    <p class="font-bold uppercase tracking-tight text-sm" id="featureTitle">Verified Journey</p>
-                                    <p class="text-[10px] text-text-dim uppercase font-black tracking-widest">Safe & Secure</p>
+
+                                    <p class="font-bold uppercase tracking-tight text-sm"
+                                       id="featureTitle">
+
+                                        Verified Journey
+
+                                    </p>
+
+                                    <p class="text-[10px] text-text-dim uppercase font-black tracking-widest">
+
+                                        Safe & Secure
+
+                                    </p>
+
                                 </div>
+
                             </div>
+
                         </div>
 
-                        <button type="submit" id="submitBtn" class="btn btn-primary w-full py-5 text-lg">
+                        <button
+                            type="submit"
+                            id="submitBtn"
+                            class="btn btn-primary w-full py-5 text-lg"
+                        >
+
                             Publish Ride
+
                         </button>
+
                     </div>
+
                 </form>
+
             </div>
+
         </div>
+
     </div>
 
+    <!-- SCRIPT -->
     <script type="module">
+
         import { utils } from '/js/utils.js';
-        import { rides } from '/js/rides.js';
-        
+
         utils.requireAuth();
+
         lucide.createIcons();
 
         const user = utils.getUser();
-        const pageTitle = document.getElementById('pageTitle');
-        const seatsLabel = document.getElementById('seatsLabel');
-        const featureTitle = document.getElementById('featureTitle');
-        const submitBtn = document.getElementById('submitBtn');
 
+        const pageTitle =
+            document.getElementById('pageTitle');
+
+        const seatsLabel =
+            document.getElementById('seatsLabel');
+
+        const featureTitle =
+            document.getElementById('featureTitle');
+
+        const submitBtn =
+            document.getElementById('submitBtn');
+
+        // Rider Mode UI
         if (user && user.role === 'Rider') {
-            pageTitle.innerText = "Request a Ride";
-            seatsLabel.innerText = "Seats Needed";
-            featureTitle.innerText = "Broadcast to Drivers";
-            submitBtn.innerText = "Send Request";
-            document.getElementById('seats').value = 1;
+
+            pageTitle.innerText =
+                "Request a Ride";
+
+            seatsLabel.innerText =
+                "Seats Needed";
+
+            featureTitle.innerText =
+                "Broadcast to Drivers";
+
+            submitBtn.innerText =
+                "Send Request";
+
+            document.getElementById(
+                'seats'
+            ).value = 1;
         }
 
-        document.getElementById('createRideForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const rideData = {
-                start_location: document.getElementById('start_location').value,
-                end_location: document.getElementById('end_location').value,
-                time: document.getElementById('time').value,
-                seats: parseInt(document.getElementById('seats').value),
-                type: user.role === 'Rider' ? 'Request' : 'Offer',
-                userName: user.name
-            };
-            await rides.create(rideData);
-        });
+        // CREATE RIDE
+        document.getElementById(
+            'createRideForm'
+        ).addEventListener(
+            'submit',
+            async (e) => {
+
+                e.preventDefault();
+
+                const token =
+                    localStorage.getItem(
+                        "accessToken"
+                    );
+
+                if (!token) {
+
+                    alert(
+                        "Please login first"
+                    );
+
+                    window.location.href =
+                        "login.html";
+
+                    return;
+                }
+
+                const rideData = {
+
+                    start_location:
+                        document.getElementById(
+                            'start_location'
+                        ).value,
+
+                    end_location:
+                        document.getElementById(
+                            'end_location'
+                        ).value,
+
+                    total_seats:
+                        parseInt(
+                            document.getElementById(
+                                'seats'
+                            ).value
+                        ),
+
+                    available_seats:
+                        parseInt(
+                            document.getElementById(
+                                'seats'
+                            ).value
+                        ),
+
+                    departure_time:
+                        document.getElementById(
+                            'time'
+                        ).value,
+
+                    status:
+                        "scheduled"
+                };
+
+                try {
+
+                    const response =
+                        await fetch(
+                            "http://127.0.0.1:8000/api/rides/create/",
+                            {
+                                method: "POST",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/json",
+
+                                    "Authorization":
+                                        `Bearer ${token}`
+                                },
+
+                                body:
+                                    JSON.stringify(
+                                        rideData
+                                    )
+                            }
+                        );
+
+                    const data =
+                        await response.json();
+
+                    console.log(data);
+
+                    if (response.ok) {
+
+                        alert(
+                            "Ride Created Successfully!"
+                        );
+
+                        window.location.href =
+                            "dashboard.html";
+
+                    } else {
+
+                        alert(
+                            JSON.stringify(data)
+                        );
+                    }
+
+                } catch (error) {
+
+                    console.log(error);
+
+                    alert("Server Error");
+                }
+            }
+        );
+
     </script>
+
 </body>
 </html>
