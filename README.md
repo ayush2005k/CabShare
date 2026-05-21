@@ -560,7 +560,7 @@ Some major engineering challenges solved during development:
 
 # 👨‍💻 Author
 
-Developed by Ayush Singh.
+Developed by Ayush Kumar Singh.
 
 This project was built as a full-stack portfolio and internship-level engineering project focused on modern web development, authentication systems, API integration, and scalable ride-sharing architecture.
 
@@ -581,3 +581,4 @@ If you found this project helpful:
 🚧 Project Under Active Development
 
 More exciting features and production-level improvements are coming soon.
+
