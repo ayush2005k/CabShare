@@ -1,4 +1,4 @@
-# 🚖 CabShare — Smart Cab Pooling Plat
+# 🚖 CabShare — Smart Cab Pooling Platform
 
 CabShare is a full-stack cab pooling web application that allows users to create rides, discover available rides, and join rides securely using JWT authentication.
 
